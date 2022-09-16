@@ -18,7 +18,7 @@ tagline: Fall 2022 - CE200 - DSA
 description: In this course, students will learn about the correct programming structures, abstractions and algorithms that are necessary for improving the efficiency and scalability of a computer program. Topics will include data structures, learning about algorithmic complexity. Each topic will be augmented by a programming task that demonstrates the use of algorithms and data-structures.
 author: Usama Bin Shakeel
 baseurl: '/' # the subpath of your site, e.g. /blog
-url: 'https://fall2022-ce200.ubs.dev/'#'https://ITULahore-DS-Fall2022-CE.github.io' # the base hostname & protocol for your site, e.g. http://example.com
+url: 'https://fall2022-ce200.ubs.dev'#'https://ITULahore-DS-Fall2022-CE.github.io' # the base hostname & protocol for your site, e.g. http://example.com
 exclude: ["Gemfile", "Gemfile.lock", "LICENSE", "README.md"]
 logo: "/assets/images/ubs-itu.png"
 exclude: [vendor]
