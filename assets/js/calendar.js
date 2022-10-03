@@ -14,7 +14,7 @@ function loadData() {
     })
 }
 function mapThroughData(data) {
-    // console.log("data inside mapThroughData 23:::", data)
+    console.log("data inside mapThroughData 23:::", data)
     data.map(item => {
         createContent(item)
     })
@@ -31,14 +31,13 @@ function createContent(item) {
     ${item.week} - ${item.title}` : ""}`
 
     let cardDHTML = `${item.visible == "y" ? `
-    
-    ${item.notice ? createNoticeList(item.notice_date, item.notice) : ""}
-    ${item.notice_b ? createNoticeList(item.notice_b_date, item.notice_b) : ""}
-    ${item.lec_a_topic ? createLecList(item.lec_a_date, item.lec_a_makeup, item.lec_a_topic, item.lec_a_link, item.quiz_a_link, item.quiz_a_sol_link) : ""}
-    ${item.lab_a ? createLabList(item.lab_a_makeup, item.lab_a_date, item.lab_a, item.lab_a_link, item.lab_a_sol_link, item.lab_a_deadline_time) : ""}
-    ${item.lec_b_topic ? createLecList(item.lec_b_date, item.lec_b_makeup, item.lec_b_topic, item.lec_b_link, item.quiz_b_link, item.quiz_b_sol_link) : ""}
-    ${item.lab_b ? createLabList(item.lab_b_makeup, item.lab_b_date, item.lab_b, item.lab_b_link, item.lab_b_sol_link, item.lab_b_deadline_time) : ""}
-    ${item.assignment_no ? createAssignmentList(item.assignment_date, item.assignment_no, item.assignment_link, item.assignment_sol_link, item.assign_deadline_time) : ""}
+    ${item.notice_date == "" || item.notice_date == "n" ? "" : createNoticeList(item.notice_date, item.notice)}
+    ${item.notice_b_date == "" || item.notice_b_date == "n" ? "" :  createNoticeList(item.notice_b_date, item.notice_b)}
+    ${item.lec_a_date == "" || item.lec_a_date == "n" ? "" : createLecList(item.lec_a_date, item.lec_a_makeup, item.lec_a_topic, item.lec_a_link, item.quiz_a_link, item.quiz_a_sol_link)}
+    ${item.lab_a_date == "" || item.lab_a_date =="n" ? "" : createLabList(item.lab_a_makeup, item.lab_a_date, item.lab_a, item.lab_a_link, item.lab_a_sol_link, item.lab_a_deadline_time)}
+    ${item.lec_b_date == "" || item.lec_b_date == "n" ? "" : createLecList(item.lec_b_date, item.lec_b_makeup, item.lec_b_topic, item.lec_b_link, item.quiz_b_link, item.quiz_b_sol_link)}
+    ${item.lab_b_date == "" || item.lab_b_date == "n" ? "" : createLabList(item.lab_b_makeup, item.lab_b_date, item.lab_b, item.lab_b_link, item.lab_b_sol_link, item.lab_b_deadline_time)}
+    ${item.assignment_date == "" || item.assignment_date == "n" ? "" : createAssignmentList(item.assignment_date, item.assignment_no, item.assignment_link, item.assignment_sol_link, item.assign_deadline_time)}
     ` : ""}`
 
     calendarContainer.innerHTML = cardDHTML;
@@ -46,7 +45,7 @@ function createContent(item) {
     calendarDiv.appendChild(calendarContainer);
 
 }
-// for simple notice 
+// for simple notice
 function createNoticeList(noticeDate, notice) {
     return (`
     <dl>
@@ -59,9 +58,7 @@ function createLecList(lecDate, lecMakeUp, lecTopic, lecLink, quizLink, quizSolL
     // console.log("lecLink", lecLink)
     return (`
         <dl>
-            <dt>
-                ${lecDate}
-            </dt>
+            <dt>${lecDate}</dt>
             <dd>                
                 <strong class="label schedule-event lecture">Theory</strong>
                 ${lecMakeUp == "y" ? `<strong class="label label-yellow">Make-up</strong>` : ""}
@@ -78,9 +75,7 @@ function createLecList(lecDate, lecMakeUp, lecTopic, lecLink, quizLink, quizSolL
 function createLabList(labMakeup, date, labName, labLink, labSolLink, deadlineTime) {
     return (`
         <dl>
-            <dt>
-                ${date}
-            </dt>
+            <dt>${date}</dt>
             <dd>                
                 <strong class="label label-green">Lab</strong>
                 ${labMakeup == "y" ? `<strong class="label label-yellow">Make-up</strong>` : ""}
@@ -97,9 +92,7 @@ function createLabList(labMakeup, date, labName, labLink, labSolLink, deadlineTi
 function createAssignmentList(date, AssignmentNo, assignmentLink, assignmentSolLink, deadlineTime) {
     return (`
     <dl>
-        <dt>
-            ${date}
-        </dt>
+        <dt>${date}</dt>
         <dd>                
             <strong class="label label-red">Assignment</strong>
             ${assignmentLink == "n" || assignmentLink == "" ? `${AssignmentNo}` : `<strong><a href=${assignmentLink}>${AssignmentNo}</a></strong>`}
