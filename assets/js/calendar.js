@@ -1,5 +1,4 @@
-//url contains applink share through app script deployment
-const url = 'https://script.google.com/macros/s/AKfycbxP6Eicv_oF9Qa0Ku3s64KN0EkX2Y2zunZjvsppDbLw5QbB9CYoJ7jN2ANiDFGMo1MNuA/exec';
+const url = "https://script.google.com/macros/s/AKfycbzOp5zFkG7uLcnOfm4oWoLlBiABjXrHpqilhHXobt1Zmr-Xd2D2ydTWSq1EBCEtR5nKrQ/exec"
 const sheet = "week_data";
 const loading = document.getElementById("loader");
 const newURL = url + '?data=' + sheet;
@@ -14,9 +13,11 @@ function loadData() {
     })
 }
 function mapThroughData(data) {
-    console.log("data inside mapThroughData 23:::", data)
-    data.map(item => {
+    // console.log("data inside mapThroughData 23:::", data)
+    data.reverse().map(item => {
+        if (item.visible == "y"){
         createContent(item)
+        }
     })
 }
 function createContent(item) {
@@ -45,7 +46,7 @@ function createContent(item) {
     calendarDiv.appendChild(calendarContainer);
 
 }
-// for simple notice
+// for simple notice 
 function createNoticeList(noticeDate, notice) {
     return (`
     <dl>

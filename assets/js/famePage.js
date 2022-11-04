@@ -1,8 +1,7 @@
 //url contains applink share through app script deployment
-const url = 'https://script.google.com/macros/s/AKfycbxP6Eicv_oF9Qa0Ku3s64KN0EkX2Y2zunZjvsppDbLw5QbB9CYoJ7jN2ANiDFGMo1MNuA/exec';
+const url = "https://script.google.com/macros/s/AKfycbzOp5zFkG7uLcnOfm4oWoLlBiABjXrHpqilhHXobt1Zmr-Xd2D2ydTWSq1EBCEtR5nKrQ/exec"
 const loading = document.getElementById("loader");
 loadData();
-// console.log("newURL",newURL)
 function loadData() {
     const sheet = "top_std_of_week";
     const sheet2 = "overall_top_std";
@@ -36,15 +35,31 @@ function createContent(item, container) {
     let parentDiv = document.getElementById(container);
         let fameDiv = document.createElement("div");
         fameDiv.classList.add("staffer");
-        const divContainer =
-            `<img class="staffer-image" src="/assets/images/students/${item.image ? item.image : "placeholder.jpg"}" alt="user-image">
-            <div>
-                <h3 class="staffer-name">
-                    ${item.student_name}
-                </h3>
-                ${item.student_email ? `<p><a href="mailto:${item.email}">${item.student_email}</a></p>` : ""}
-                <p>${ item.week ? item.week : "" }</p>
-            </div>`
+        let responsiveClass = `${container == "overall_top_std" ? "fame-responsive" : "no-responsive"}`
+        // console.log("responsiveClass ::: ", responsiveClass, "for :::", container)
+        fameDiv.classList.add(responsiveClass);
+        const divContainer = `${container === "top_std_of_week" ? 
+        `<img class="staffer-image" src="/assets/images/students/${item.image ? item.image : "placeholder.jpeg"}" alt="user-image">
+        <div>
+            <h3 class="staffer-name">
+                ${item.student_name}
+            </h3>
+            ${item.student_email ? `<p><a href="mailto:${item.student_email}">${item.student_email}</a></p>` : ""}
+            <p>${ item.week ? item.week : "" }</p>
+        </div>` 
+        :
+        `${item.student_name !== "" ? `<div class="fame-std-container">
+        <img class="staffer-image" style="width: 100px" src="/assets/images/students/${item.image ? item.image : "placeholder.jpeg"}" alt="user-image">
+        <div class="fame-detailContainer">
+            <h3 class="staffer-name">
+                ${item.student_name}
+            </h3>
+            ${item.student_email ? `<p><a href="mailto:${item.student_email}">${item.student_email}</a></p>` : ""}
+            <p>${ item.position ? item.position : "" }</p>
+        </div>
+        </div>
+        ${item.position !== "" ? `<div class="fame-position-image"><img class="staffer-image fame-badge-image"src="/assets/images/positions/${item.position && item.position+".jpeg"}" alt="user-image"></div>` : ""}` : "" }`
+    }`
             fameDiv.innerHTML = divContainer;
         parentDiv.appendChild(fameDiv);
 }

@@ -12,5 +12,5 @@ description: The weekly event schedule.
 {% endfor %}
 
 
-[Book UBS Appointment](#){: .btn .btn-outline .h6}
-[Book TA Appointment](#){: .btn .btn-outline .h6}
+[Book UBS Appointment](){: .btn .btn-outline .h6}
+[Book TA Appointment](){: .btn .btn-outline .h6}

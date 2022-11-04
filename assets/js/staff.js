@@ -1,5 +1,6 @@
 //url contains applink share through app script deployment
-const url = 'https://script.google.com/macros/s/AKfycbxP6Eicv_oF9Qa0Ku3s64KN0EkX2Y2zunZjvsppDbLw5QbB9CYoJ7jN2ANiDFGMo1MNuA/exec';
+
+const url = "https://script.google.com/macros/s/AKfycbzOp5zFkG7uLcnOfm4oWoLlBiABjXrHpqilhHXobt1Zmr-Xd2D2ydTWSq1EBCEtR5nKrQ/exec"
 const loading = document.getElementById("loader");
 const sheet = "staff";
 const newURL = url+'?data='+sheet;
@@ -30,7 +31,7 @@ function createContent(item, container) {
     stafferDiv.classList.add("staffer");
 
     const divContainer = 
-    `<img class="staffer-image" src="/assets/images/staff/${item.image ? item.image : "placeholder.jpg"}" alt="user-image">
+    `<img class="staffer-image" src="/assets/images/staff/${item.image ? item.image : "placeholder.jpeg"}" alt="user-image">
     <div>
         <h3 class="staffer-name">
             ${item.name}

@@ -2,29 +2,38 @@
 layout: page
 title: Attendance
 description: Attendance Details
+nav_order: 4
 ---
-<link rel="stylesheet" href="/assets/css/style.css">
-
+<link rel="stylesheet" href="/assets/css/attendance.css">
+ 
 # {{page.title}}
 
-1. <span class="text-green-200">Green for those Students having 100% Attendance</span>
+1. <span class="text-green-200">Green for those students having 100% Attendance</span>
 1. <span class="text-yellow-200">Yellow for those students that can be terminated if they don't improve their attendance</span>
-1. <span class="text-red-200">Red for Terminated Students</span>
+1. <span class="text-red-200">Red for students not fullfilling the attendance requirements.</span>
+<h2> Please Enter Your Roll No. </h2>
+<div class="mt-3">
+<input type="text" id="stdRollNumber" class="inputFieldStyle"/>
+<button onClick="getUserRollNumber()" class="btn btn-outline h6" 
+    style="box-shadow: 0 1px 2px rgb(0 0 0 / 12%), 0 3px 10px rgb(0 0 0 / 8%);">Search</button>
+</div>
+<p id="errorMsg" style="color: red"></p>
 
 <div class="announcement" markdown="1">
-<ul style="list-style-type: none;" id="ul_container">
-<li style="border-bottom: 1px solid #ede7e7; padding-bottom: 6px; margin-bottom: 6px">
-<div style="display: flex;" > 
-<div style="flex-basis: 25%"> <b>Registration No.</b> </div>
-<div style="flex-basis: 25%"> <b>Name</b> </div>
-<div style="flex-basis: 25%"> <b>Theory Attendance</b> </div>
-<div style="flex-basis: 25%"> <b>Lab Attendance</b> </div>
+<ul id="ul_container">
+<li class="liStyle">
+<div class="d-flex">
+<div class="width33"> <b>Registration No.</b> </div>
+<div class="width33"> <b>Theory Attendance</b> </div>
+<div class="width33"> <b>Lab Attendance</b> </div>
 </div>
 </li>
 </ul>
 </div>
+<div class="announcement" id="card_container">
+</div>
 
-<div class="loader" id="loader"></div>
+<div id="loader"></div>
 
 <script src="/assets/js/attendance.js">
 </script>
